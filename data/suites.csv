@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","200","seed","","2026-09-07","passed","2026-09-07","Test group","seed.spec.ts","",""
+"","3513","Verify login with invalid credentials 2","","2026-09-07","passed","2026-09-07","Login Page","LoginPage.spec.js","",""
+"","3573","Verify login with invalid credentials","","2026-09-07","passed","2026-09-07","Login Page","LoginPage.spec.js","",""
+"","5090","Verify login with valid credentials","","2026-09-07","passed","2026-09-07","Login Page","LoginPage.spec.js","",""
