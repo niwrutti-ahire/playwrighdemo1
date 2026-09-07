@@ -9,17 +9,56 @@ on:
     branches:
       - main
 
+# Required for pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
       - name: Install Playwright browsers
         run: npx playwright install
-      - name: Run tests
-        run: npm test
+
+      - name: Install Allure reporter & CLI
+        run: npm install --save-dev allure-playwright allure-commandline
+
+      - name: Run tests (Playwright with Allure reporter)
+        run: npx playwright test --reporter=allure-playwright
+
+      - name: Generate Allure report
+        run: npx allure generate ./allure-results -o ./allure-report --clean
+
+      - name: Upload Allure report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: ./allure-report
+
+      # Upload the report for the Pages deploy job to consume
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./allure-report
+
+  deploy-pages:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
