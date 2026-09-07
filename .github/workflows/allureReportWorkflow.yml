@@ -1,4 +1,4 @@
-name: LoginPage
+name: Allure Report Workflow
 
 on:
   workflow_dispatch:
