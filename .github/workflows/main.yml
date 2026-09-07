@@ -1,4 +1,4 @@
-name: Create main.yml
+name: LoginPage.yml
 
 on:
   workflow_dispatch:
