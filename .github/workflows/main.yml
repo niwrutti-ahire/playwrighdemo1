@@ -1,4 +1,4 @@
-name: LoginPage.yml
+name: LoginPage
 
 on:
   workflow_dispatch:
@@ -9,56 +9,16 @@ on:
     branches:
       - main
 
-# Required for pages deployment
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install
-
-      - name: Install Allure reporter & CLI
-        run: npm install --save-dev allure-playwright allure-commandline
-
-      - name: Run tests (Playwright with Allure reporter)
-        run: npx playwright test --reporter=allure-playwright
-
-      - name: Generate Allure report
-        run: npx allure generate ./allure-results -o ./allure-report --clean
-
-      - name: Upload Allure report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: ./allure-report
-
-      # Upload the report for the Pages deploy job to consume
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./allure-report
-
-  deploy-pages:
-    needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+      - run: npm ci
+      - run: npx playwright install
+      - run: npm install --save-dev allure-playwright allure-commandline
+      - run: npx playwright test --reporter=allure-playwright
+      - run: npx allure generate ./allure-results -o ./allure-report --clean
