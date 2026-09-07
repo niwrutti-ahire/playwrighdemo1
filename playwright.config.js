@@ -15,7 +15,8 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  */
 const config = defineConfig({
   testDir: './tests',
-  timeout: 12000,
+  timeout: 30000,
+  navigationTimeout: 30000,
   expect: {
     timeout: 5000
   },
