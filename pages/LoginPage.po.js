@@ -5,10 +5,11 @@ class LoginPage {
 		this.passwordInput = page.locator('#userPassword');
 		this.loginButton = page.getByRole('button', { name: 'Login' });
 		this.productTitle = page.getByRole('heading', { name: 'ADIDAS ORIGINAL' });
+		this.loginError = page.getByText('Incorrect email or password.');
 	}
 
 	async goto() {
-		await this.page.goto('https://rahulshettyacademy.com/client/#/auth/login');
+		await this.page.goto(process.env.BASE_URL);
 	}
 
 	async login(email, password) {

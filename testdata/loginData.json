@@ -1,4 +1,10 @@
 {
-  "email": "niwruttidahire@gmail.com",
-  "password": "Abcd@12345"
+  "validUser": {
+    "email": "niwruttidahire@gmail.com",
+    "password": "Abcd@12345"
+  },
+  "invalidUser": {
+    "email": "niwtaxcaddy@gmail.com",
+    "password": "Abcd@123"
+  }
 }
