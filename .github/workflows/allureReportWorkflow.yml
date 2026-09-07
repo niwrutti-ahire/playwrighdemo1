@@ -32,16 +32,16 @@ jobs:
         run: npx playwright test --reporter=allure-playwright
       
       - name: Generate Allure report
-        if: always()
+        if: ${{ always() }}
         run: npx allure generate ./allure-results -o ./allure-report --clean
       
       - name: Deploy to GitHub Pages
-        if: "always() && github.event_name == 'push' && github.ref == 'refs/heads/main'"
+        if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
       
       - name: Display Report URL
-        if: "github.event_name == 'push' && github.ref == 'refs/heads/main'"
-        run: echo "📊 Allure Report URL: https://niwrutti-ahire.github.io/playwrighdemo1/"
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: echo '📊 Allure Report URL: https://niwrutti-ahire.github.io/playwrighdemo1/'
