@@ -1,5 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","12203","Verify login with valid credentials","","2026-09-07","broken","2026-09-07","Login Page","LoginPage.spec.js","",""
+"","12185","Verify login with invalid credentials 2","","2026-09-07","broken","2026-09-07","Login Page","LoginPage.spec.js","",""
+"","191","seed","","2026-09-07","passed","2026-09-07","Test group","seed.spec.ts","",""
 "","3573","Verify login with invalid credentials","","2026-09-07","passed","2026-09-07","Login Page","LoginPage.spec.js","",""
-"","210","seed","","2026-09-07","passed","2026-09-07","Test group","seed.spec.ts","",""
-"","12238","Verify login with invalid credentials 2","","2026-09-07","broken","2026-09-07","Login Page","LoginPage.spec.js","",""
+"","6053","Verify login with valid credentials","","2026-09-07","passed","2026-09-07","Login Page","LoginPage.spec.js","",""
