@@ -8,7 +8,7 @@ test.describe('Login Page', () => {
         await expect(loginPage.productTitle).toBeVisible();
     });
 
-    test('Verify login with invalid credentials 2', async ({ loginPage }) => {
+    test('Verify login with invalid credentials 2 @smoke', async ({ loginPage }) => {
         await loginPage.goto();
         await loginPage.login(loginData.invalidUser.email, loginData.invalidUser.password);
         await expect(loginPage.loginError).toBeVisible();
